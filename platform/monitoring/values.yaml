@@ -1,0 +1,20 @@
+grafana:
+  grafana.ini:
+    server:
+      root_url: http://grafana.lab.local
+  imageRenderer:
+    enabled: true
+    resources:
+      limits:
+        memory: 1Gi
+      requests:
+        memory: 256Mi
+  ingress:
+    enabled: true
+    hosts:
+    - grafana.lab.local
+prometheus:
+  prometheusSpec:
+    nodeSelector:
+      kubernetes.io/hostname: k3s-server
+    retention: 7d
